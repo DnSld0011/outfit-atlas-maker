@@ -1,5 +1,64 @@
 import { ShoppingBag, Search, User, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import categoryWomen from "@/assets/category-women.jpg";
+import categoryMen from "@/assets/category-men.jpg";
+import categoryKids from "@/assets/category-kids.jpg";
+import categorySale from "@/assets/category-sale.jpg";
+
+const categories = [
+  {
+    name: "MUJER",
+    image: categoryWomen,
+    alt: "Colección mujer",
+    links: [
+      { label: "Nueva Colección", href: "#" },
+      { label: "Vestidos", href: "#" },
+      { label: "Pantalones", href: "#" },
+      { label: "Accesorios", href: "#" },
+    ],
+  },
+  {
+    name: "HOMBRE",
+    image: categoryMen,
+    alt: "Colección hombre",
+    links: [
+      { label: "Nueva Colección", href: "#" },
+      { label: "Camisas", href: "#" },
+      { label: "Pantalones", href: "#" },
+      { label: "Accesorios", href: "#" },
+    ],
+  },
+  {
+    name: "NIÑOS",
+    image: categoryKids,
+    alt: "Colección niños",
+    links: [
+      { label: "Nueva Colección", href: "#" },
+      { label: "Niñas", href: "#" },
+      { label: "Niños", href: "#" },
+      { label: "Bebés", href: "#" },
+    ],
+  },
+  {
+    name: "SALE",
+    image: categorySale,
+    alt: "Ofertas y descuentos",
+    links: [
+      { label: "Mujer Rebajas", href: "#" },
+      { label: "Hombre Rebajas", href: "#" },
+      { label: "Niños Rebajas", href: "#" },
+      { label: "Últimas Unidades", href: "#" },
+    ],
+  },
+];
 
 const Navbar = () => {
   return (
@@ -17,20 +76,44 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-sm tracking-wide hover:text-accent transition-colors">
-              MUJER
-            </a>
-            <a href="#" className="text-sm tracking-wide hover:text-accent transition-colors">
-              HOMBRE
-            </a>
-            <a href="#" className="text-sm tracking-wide hover:text-accent transition-colors">
-              NIÑOS
-            </a>
-            <a href="#" className="text-sm tracking-wide hover:text-accent transition-colors">
-              SALE
-            </a>
-          </nav>
+          <NavigationMenu className="hidden md:flex">
+            <NavigationMenuList>
+              {categories.map((category) => (
+                <NavigationMenuItem key={category.name}>
+                  <NavigationMenuTrigger className="text-sm tracking-wide bg-transparent hover:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent">
+                    {category.name}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid gap-3 p-6 w-[600px] grid-cols-[1fr_250px]">
+                      <div className="grid gap-2">
+                        <h4 className="text-lg font-medium mb-2">{category.name}</h4>
+                        <div className="grid gap-1">
+                          {category.links.map((link) => (
+                            <NavigationMenuLink
+                              key={link.label}
+                              href={link.href}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            >
+                              <div className="text-sm font-medium leading-none">
+                                {link.label}
+                              </div>
+                            </NavigationMenuLink>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="relative h-full overflow-hidden rounded-md">
+                        <img
+                          src={category.image}
+                          alt={category.alt}
+                          className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                      </div>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
 
           {/* Actions */}
           <div className="flex items-center gap-4">
