@@ -28,7 +28,7 @@ const categories = [
     image: categoryWomen,
     alt: "Colección mujer",
     links: [
-      { label: "Nueva Colección", href: "#" },
+      { label: "Nueva Colección", href: "/collections/women" },
       { label: "Vestidos", href: "#" },
       { label: "Pantalones", href: "#" },
       { label: "Accesorios", href: "#" },
@@ -39,7 +39,7 @@ const categories = [
     image: categoryMen,
     alt: "Colección hombre",
     links: [
-      { label: "Nueva Colección", href: "#" },
+      { label: "Nueva Colección", href: "/collections/men" },
       { label: "Camisas", href: "#" },
       { label: "Pantalones", href: "#" },
       { label: "Accesorios", href: "#" },
@@ -50,7 +50,7 @@ const categories = [
     image: categoryKids,
     alt: "Colección niños",
     links: [
-      { label: "Nueva Colección", href: "#" },
+      { label: "Nueva Colección", href: "/collections/kids" },
       { label: "Niñas", href: "#" },
       { label: "Niños", href: "#" },
       { label: "Bebés", href: "#" },
