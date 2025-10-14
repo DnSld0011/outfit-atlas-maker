@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Heart, Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
 import {
   Sheet,
   SheetContent,
@@ -36,11 +37,31 @@ const ProductDetail = ({ product, isOpen, onClose }: ProductDetailProps) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
+  const { addItem } = useCart();
 
   if (!product) return null;
 
   const colors = product.colors || [{ name: "Original", image: product.image }];
   const sizes = product.sizes || ["S", "M", "L", "XL"];
+
+  const handleAddToCart = () => {
+    if (!selectedSize) return;
+    
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: colors[selectedColor].image,
+      size: selectedSize,
+      color: colors[selectedColor].name,
+      quantity,
+    });
+    
+    // Reset selections
+    setSelectedSize("");
+    setQuantity(1);
+    onClose();
+  };
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
@@ -158,6 +179,7 @@ const ProductDetail = ({ product, isOpen, onClose }: ProductDetailProps) => {
               size="lg"
               className="w-full mb-6 bg-foreground text-background hover:bg-foreground/90"
               disabled={!selectedSize}
+              onClick={handleAddToCart}
             >
               AÑADIR
             </Button>

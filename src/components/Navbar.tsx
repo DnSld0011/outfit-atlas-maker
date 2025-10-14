@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import Cart from "@/components/Cart";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -69,6 +71,8 @@ const categories = [
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { totalItems } = useCart();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -137,11 +141,18 @@ const Navbar = () => {
             <Button variant="ghost" size="icon" className="hover:text-accent h-9 w-9 md:h-10 md:w-10 hidden sm:flex">
               <User className="h-4 w-4 md:h-5 md:w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover:text-accent relative h-9 w-9 md:h-10 md:w-10">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="hover:text-accent relative h-9 w-9 md:h-10 md:w-10"
+              onClick={() => setIsCartOpen(true)}
+            >
               <ShoppingBag className="h-4 w-4 md:h-5 md:w-5" />
-              <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center">
-                0
-              </span>
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
             </Button>
           </div>
         </div>
@@ -174,6 +185,9 @@ const Navbar = () => {
           </nav>
         </SheetContent>
       </Sheet>
+
+      {/* Cart */}
+      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 };
