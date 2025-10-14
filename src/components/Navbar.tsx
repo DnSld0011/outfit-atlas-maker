@@ -1,4 +1,5 @@
-import { ShoppingBag, Search, User, Menu } from "lucide-react";
+import { useState } from "react";
+import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -8,6 +9,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import categoryWomen from "@/assets/category-women.jpg";
 import categoryMen from "@/assets/category-men.jpg";
 import categoryKids from "@/assets/category-kids.jpg";
@@ -61,12 +68,19 @@ const categories = [
 ];
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Mobile menu */}
-          <Button variant="ghost" size="icon" className="md:hidden">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="md:hidden"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
             <Menu className="h-5 w-5" />
           </Button>
 
@@ -116,15 +130,15 @@ const Navbar = () => {
           </NavigationMenu>
 
           {/* Actions */}
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="hover:text-accent">
-              <Search className="h-5 w-5" />
+          <div className="flex items-center gap-2 md:gap-4">
+            <Button variant="ghost" size="icon" className="hover:text-accent h-9 w-9 md:h-10 md:w-10">
+              <Search className="h-4 w-4 md:h-5 md:w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover:text-accent">
-              <User className="h-5 w-5" />
+            <Button variant="ghost" size="icon" className="hover:text-accent h-9 w-9 md:h-10 md:w-10 hidden sm:flex">
+              <User className="h-4 w-4 md:h-5 md:w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover:text-accent relative">
-              <ShoppingBag className="h-5 w-5" />
+            <Button variant="ghost" size="icon" className="hover:text-accent relative h-9 w-9 md:h-10 md:w-10">
+              <ShoppingBag className="h-4 w-4 md:h-5 md:w-5" />
               <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center">
                 0
               </span>
@@ -132,6 +146,34 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+        <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+          <SheetHeader>
+            <SheetTitle className="text-2xl font-light tracking-widest">FASHION</SheetTitle>
+          </SheetHeader>
+          <nav className="mt-8 flex flex-col gap-6">
+            {categories.map((category) => (
+              <div key={category.name} className="space-y-3">
+                <h3 className="font-medium tracking-wide text-lg">{category.name}</h3>
+                <div className="flex flex-col gap-2 pl-4">
+                  {category.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </nav>
+        </SheetContent>
+      </Sheet>
     </header>
   );
 };

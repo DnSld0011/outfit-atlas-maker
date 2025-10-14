@@ -60,25 +60,25 @@ const ProductGrid = () => {
 
   return (
     <>
-      <section className="py-16 md:py-24">
+      <section className="py-8 md:py-16 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-light mb-4 tracking-tight">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-light mb-2 md:mb-4 tracking-tight">
               Productos Destacados
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-sm md:text-base lg:text-lg">
               Nuestra selección favorita de la temporada
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8">
             {products.map((product) => (
               <div
                 key={product.id}
                 className="group cursor-pointer"
                 onClick={() => handleProductClick(product)}
               >
-                <div className="relative aspect-[3/4] overflow-hidden bg-secondary mb-4">
+                <div className="relative aspect-[3/4] overflow-hidden bg-secondary mb-2 md:mb-4">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -86,12 +86,12 @@ const ProductGrid = () => {
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
-                <h3 className="font-light text-lg mb-2">{product.name}</h3>
-                <p className="text-muted-foreground mb-4">S/ {product.price}</p>
+                <h3 className="font-light text-sm md:text-base lg:text-lg mb-1 md:mb-2">{product.name}</h3>
+                <p className="text-muted-foreground text-sm md:text-base mb-2 md:mb-4">S/ {product.price}</p>
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="w-full opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:block"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleProductClick(product);
