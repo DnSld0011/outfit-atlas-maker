@@ -45,8 +45,10 @@ const MenCollection = () => {
       image: product1,
       description: "Camisa casual de lino con pantalón chino. Look urbano y relajado.",
       sizes: ["S", "M", "L", "XL"],
+      colors: ["Beige", "Blanco", "Azul claro"],
       materials: "100% lino",
-      care: "Lavar a máquina a 30°C. Planchar húmedo."
+      care: "Lavar a máquina a 30°C. Planchar húmedo.",
+      category: "CAMISAS"
     },
     {
       id: 2,
@@ -55,8 +57,10 @@ const MenCollection = () => {
       image: product2,
       description: "Traje completo de corte moderno. Perfecto para ocasiones formales.",
       sizes: ["S", "M", "L", "XL", "XXL"],
+      colors: ["Azul marino", "Negro", "Gris carbón"],
       materials: "70% lana, 30% poliéster",
-      care: "Lavar en seco únicamente."
+      care: "Lavar en seco únicamente.",
+      category: "BLAZERS"
     },
     {
       id: 3,
@@ -65,8 +69,10 @@ const MenCollection = () => {
       image: product3,
       description: "Chaqueta denim con jeans oscuros. Estilo casual contemporáneo.",
       sizes: ["M", "L", "XL"],
+      colors: ["Azul denim", "Negro", "Gris"],
       materials: "100% algodón denim",
-      care: "Lavar a máquina a 30°C. No usar lejía."
+      care: "Lavar a máquina a 30°C. No usar lejía.",
+      category: "CASACAS"
     },
     {
       id: 4,
@@ -75,8 +81,10 @@ const MenCollection = () => {
       image: product4,
       description: "Polo deportivo con shorts. Ideal para días casuales de verano.",
       sizes: ["S", "M", "L", "XL"],
+      colors: ["Tricolor", "Azul marino", "Gris"],
       materials: "100% algodón piqué",
-      care: "Lavar a máquina a 30°C. Secar al aire libre."
+      care: "Lavar a máquina a 30°C. Secar al aire libre.",
+      category: "POLOS"
     },
     {
       id: 5,
@@ -85,8 +93,10 @@ const MenCollection = () => {
       image: product5,
       description: "Hoodie y joggers coordinados. Comodidad y estilo urbano.",
       sizes: ["M", "L", "XL", "XXL"],
+      colors: ["Naranja", "Negro", "Gris", "Azul marino"],
       materials: "80% algodón, 20% poliéster",
-      care: "Lavar a máquina a 40°C. Secar a baja temperatura."
+      care: "Lavar a máquina a 40°C. Secar a baja temperatura.",
+      category: "DEPORTIVO"
     },
     {
       id: 6,
@@ -95,8 +105,10 @@ const MenCollection = () => {
       image: product6,
       description: "Blazer casual con jeans. Look sofisticado para diversas ocasiones.",
       sizes: ["S", "M", "L", "XL"],
+      colors: ["Gris oscuro", "Azul marino", "Negro"],
       materials: "65% poliéster, 30% viscosa, 5% elastano",
-      care: "Lavar en seco. Planchar a temperatura media."
+      care: "Lavar en seco. Planchar a temperatura media.",
+      category: "BLAZERS"
     },
     {
       id: 7,
@@ -105,8 +117,10 @@ const MenCollection = () => {
       image: product7,
       description: "Polo manga larga a rayas con pantalón oscuro. Casual y elegante.",
       sizes: ["S", "M", "L", "XL"],
+      colors: ["Negro/Gris", "Azul/Blanco", "Verde/Blanco"],
       materials: "100% algodón",
-      care: "Lavar a máquina a 30°C. No usar secadora."
+      care: "Lavar a máquina a 30°C. No usar secadora.",
+      category: "POLOS"
     },
     {
       id: 8,
@@ -115,8 +129,10 @@ const MenCollection = () => {
       image: product8,
       description: "Ropa deportiva completa. Perfecta para entrenamientos y actividades.",
       sizes: ["M", "L", "XL"],
+      colors: ["Negro", "Azul marino", "Gris"],
       materials: "88% poliéster, 12% elastano",
-      care: "Lavar a máquina a 30°C. Secar rápidamente."
+      care: "Lavar a máquina a 30°C. Secar rápidamente.",
+      category: "DEPORTIVO"
     }
   ];
 

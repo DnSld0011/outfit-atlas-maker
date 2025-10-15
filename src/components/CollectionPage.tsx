@@ -18,8 +18,10 @@ interface Product {
   image: string;
   description: string;
   sizes: string[];
+  colors: string[];
   materials: string;
   care: string;
+  category: string;
 }
 
 interface CollectionPageProps {
@@ -33,7 +35,7 @@ interface CollectionPageProps {
 
 const CollectionPage = ({ title, subtitle, heroImage, images, categories, products }: CollectionPageProps) => {
   const [selectedCategory, setSelectedCategory] = useState("VER TODO");
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const productsRef = useRef<HTMLElement>(null);
 
@@ -42,9 +44,21 @@ const CollectionPage = ({ title, subtitle, heroImage, images, categories, produc
   };
 
   const handleProductClick = (product: Product) => {
-    setSelectedProduct(product);
+    // Convert color strings to the format expected by ProductDetail
+    const adaptedProduct = {
+      ...product,
+      colors: product.colors.map(color => ({
+        name: color,
+        image: product.image
+      }))
+    };
+    setSelectedProduct(adaptedProduct as any);
     setIsDetailOpen(true);
   };
+
+  const filteredProducts = selectedCategory === "VER TODO" 
+    ? products 
+    : products.filter(product => product.category === selectedCategory);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -126,7 +140,7 @@ const CollectionPage = ({ title, subtitle, heroImage, images, categories, produc
 
           {/* Products Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <div
                 key={product.id}
                 className="group cursor-pointer"

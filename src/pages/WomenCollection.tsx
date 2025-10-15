@@ -47,8 +47,10 @@ const WomenCollection = () => {
       image: product1,
       description: "Vestido elegante de verano con tirantes finos y abertura lateral. Perfecto para ocasiones especiales.",
       sizes: ["XS", "S", "M", "L"],
+      colors: ["Rojo", "Negro", "Azul marino"],
       materials: "95% poliéster, 5% elastano",
-      care: "Lavar a máquina a 30°C. No usar lejía."
+      care: "Lavar a máquina a 30°C. No usar lejía.",
+      category: "VESTIDOS"
     },
     {
       id: 2,
@@ -57,8 +59,10 @@ const WomenCollection = () => {
       image: product2,
       description: "Vestido con volantes de algodón ligero, ideal para días soleados. Diseño romántico y fresco.",
       sizes: ["XS", "S", "M", "L"],
+      colors: ["Blanco", "Rosa", "Beige"],
       materials: "100% algodón",
-      care: "Lavar a máquina a 30°C. Planchar a baja temperatura."
+      care: "Lavar a máquina a 30°C. Planchar a baja temperatura.",
+      category: "VESTIDOS"
     },
     {
       id: 3,
@@ -67,8 +71,10 @@ const WomenCollection = () => {
       image: product3,
       description: "Chaqueta denim con vestido floral. Perfecto para un look casual y sofisticado.",
       sizes: ["S", "M", "L", "XL"],
+      colors: ["Azul denim", "Negro"],
       materials: "Chaqueta: 100% algodón denim. Vestido: 95% viscosa, 5% elastano",
-      care: "Lavar a máquina a 30°C. No usar secadora."
+      care: "Lavar a máquina a 30°C. No usar secadora.",
+      category: "CASACAS Y ABRIGOS"
     },
     {
       id: 4,
@@ -77,8 +83,10 @@ const WomenCollection = () => {
       image: product4,
       description: "Top de encaje con shorts denim. Conjunto versátil para verano.",
       sizes: ["XS", "S", "M", "L"],
+      colors: ["Blanco", "Negro", "Beige"],
       materials: "Top: 85% nylon, 15% elastano. Shorts: 100% algodón",
-      care: "Lavar a mano con agua fría. No retorcer."
+      care: "Lavar a mano con agua fría. No retorcer.",
+      category: "BLUSAS Y CAMISAS"
     },
     {
       id: 5,
@@ -87,8 +95,10 @@ const WomenCollection = () => {
       image: product5,
       description: "Blazer negro con pantalón blanco. Look profesional y elegante.",
       sizes: ["S", "M", "L", "XL"],
+      colors: ["Negro", "Gris", "Azul marino"],
       materials: "70% poliéster, 25% viscosa, 5% elastano",
-      care: "Lavar en seco. Planchar a temperatura media."
+      care: "Lavar en seco. Planchar a temperatura media.",
+      category: "BLAZERS Y CHALECOS"
     },
     {
       id: 6,
@@ -97,8 +107,10 @@ const WomenCollection = () => {
       image: product6,
       description: "Top casual con jeans de corte moderno. Perfecto para el día a día.",
       sizes: ["XS", "S", "M", "L", "XL"],
+      colors: ["Azul claro", "Azul oscuro", "Negro"],
       materials: "Top: 60% algodón, 40% poliéster. Jeans: 98% algodón, 2% elastano",
-      care: "Lavar a máquina a 30°C. Secar al aire libre."
+      care: "Lavar a máquina a 30°C. Secar al aire libre.",
+      category: "JEANS"
     },
     {
       id: 7,
@@ -107,8 +119,10 @@ const WomenCollection = () => {
       image: product7,
       description: "Blusa con estampado colorido y pantalón cargo. Look bohemio y casual.",
       sizes: ["S", "M", "L"],
+      colors: ["Multicolor", "Azul estampado", "Verde estampado"],
       materials: "100% viscosa",
-      care: "Lavar a máquina a 30°C. No usar lejía."
+      care: "Lavar a máquina a 30°C. No usar lejía.",
+      category: "BLUSAS Y CAMISAS"
     },
     {
       id: 8,
@@ -117,8 +131,10 @@ const WomenCollection = () => {
       image: product8,
       description: "Top y shorts con estampado floral. Ideal para la playa o paseos.",
       sizes: ["XS", "S", "M", "L"],
+      colors: ["Rosa estampado", "Coral estampado", "Blanco estampado"],
       materials: "85% poliéster, 15% elastano",
-      care: "Lavar a mano. Secar a la sombra."
+      care: "Lavar a mano. Secar a la sombra.",
+      category: "SHORTS"
     }
   ];
 
