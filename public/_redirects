@@ -1,0 +1,14 @@
+# Todas las rutas de la app React → index.html
+/*    /index.html   200
+
+# Archivos estáticos (JS, CSS, imágenes)
+ /assets/*    /index.html   200
+ /static/*    /index.html   200
+
+# Forzar HTTPS en Netlify
+https://*   https://www.tu-dominio.com/:splat   301!
+
+# Página 404 personalizada (opcional)
+# Si quieres mostrar un mensaje bonito de "Página no encontrada"
+# 404.html debe estar en /public
+/*    /404.html   404
