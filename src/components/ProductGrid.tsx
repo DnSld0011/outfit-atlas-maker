@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 import ProductDetail from "@/components/ProductDetail";
 import product1 from "@/assets/product-1.jpg";
 import product2 from "@/assets/product-2.jpg";
@@ -58,6 +59,14 @@ const ProductGrid = () => {
     setIsDetailOpen(true);
   };
 
+  const handleWhatsAppClick = (product: typeof products[0], e: React.MouseEvent) => {
+    e.stopPropagation();
+    const phoneNumber = "51924115208";
+    const message = `Hola, estoy interesado en: ${product.name} - S/ ${product.price}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <>
       <section className="py-8 md:py-16 lg:py-24">
@@ -88,17 +97,26 @@ const ProductGrid = () => {
                 </div>
                 <h3 className="font-light text-sm md:text-base lg:text-lg mb-1 md:mb-2">{product.name}</h3>
                 <p className="text-muted-foreground text-sm md:text-base mb-2 md:mb-4">S/ {product.price}</p>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:block"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleProductClick(product);
-                  }}
-                >
-                  Ver detalles
-                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:flex"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleProductClick(product);
+                    }}
+                  >
+                    Ver detalles
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-[#25D366] hover:bg-[#20BD5A] text-white opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center gap-1"
+                    onClick={(e) => handleWhatsAppClick(product, e)}
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             ))}
           </div>

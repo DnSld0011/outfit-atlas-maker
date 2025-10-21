@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -54,6 +55,14 @@ const CollectionPage = ({ title, subtitle, heroImage, images, categories, produc
     };
     setSelectedProduct(adaptedProduct as any);
     setIsDetailOpen(true);
+  };
+
+  const handleWhatsAppClick = (product: Product, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const phoneNumber = "51924115208";
+    const message = `Hola, estoy interesado en: ${product.name} - S/ ${product.price}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const filteredProducts = selectedCategory === "VER TODO" 
@@ -155,7 +164,15 @@ const CollectionPage = ({ title, subtitle, heroImage, images, categories, produc
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
                 <h3 className="font-light text-sm md:text-base mb-1">{product.name}</h3>
-                <p className="text-muted-foreground text-sm md:text-base">S/ {product.price}</p>
+                <p className="text-muted-foreground text-sm md:text-base mb-2">S/ {product.price}</p>
+                <Button
+                  size="sm"
+                  className="w-full bg-[#25D366] hover:bg-[#20BD5A] text-white opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center gap-2"
+                  onClick={(e) => handleWhatsAppClick(product, e)}
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Consultar
+                </Button>
               </div>
             ))}
           </div>
