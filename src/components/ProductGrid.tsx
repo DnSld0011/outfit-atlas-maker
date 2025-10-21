@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import ProductDetail from "@/components/ProductDetail";
+import { useWhatsApp } from "@/hooks/useWhatsApp";
 import product1 from "@/assets/product-1.jpg";
 import product2 from "@/assets/product-2.jpg";
 import product3 from "@/assets/product-3.jpg";
@@ -53,6 +54,7 @@ const products = [
 const ProductGrid = () => {
   const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const { sendWhatsAppMessage, isThrottled } = useWhatsApp();
 
   const handleProductClick = (product: typeof products[0]) => {
     setSelectedProduct(product);
@@ -63,8 +65,7 @@ const ProductGrid = () => {
     e.stopPropagation();
     const phoneNumber = "51924115208";
     const message = `Hola, estoy interesado en: ${product.name} - S/ ${product.price}`;
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    sendWhatsAppMessage(phoneNumber, message);
   };
 
   return (
@@ -113,6 +114,7 @@ const ProductGrid = () => {
                     size="sm"
                     className="bg-[#25D366] hover:bg-[#20BD5A] text-white opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center gap-1"
                     onClick={(e) => handleWhatsAppClick(product, e)}
+                    disabled={isThrottled}
                   >
                     <MessageCircle className="h-4 w-4" />
                   </Button>

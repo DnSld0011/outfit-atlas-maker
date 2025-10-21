@@ -1,14 +1,20 @@
 import React from "react";
+import { useWhatsApp } from "@/hooks/useWhatsApp";
 
 const WhatsAppButton = () => {
-  const phoneNumber = "51924115208"; // tu número de WhatsApp
+  const phoneNumber = "51924115208";
   const message = "Hola! Estoy interesado en sus productos";
+  const { sendWhatsAppMessage, isThrottled } = useWhatsApp();
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    sendWhatsAppMessage(phoneNumber, message);
+  };
 
   return (
-    <a
-      href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`}
-      target="_blank"
-      rel="noopener noreferrer"
+    <button
+      onClick={handleClick}
+      disabled={isThrottled}
       style={{
         position: "fixed",
         bottom: "20px",
@@ -25,11 +31,14 @@ const WhatsAppButton = () => {
         zIndex: 1000,
         textDecoration: "none",
         fontSize: "28px",
+        border: "none",
+        cursor: isThrottled ? "not-allowed" : "pointer",
+        opacity: isThrottled ? 0.6 : 1,
       }}
       aria-label="Chatea con nosotros por WhatsApp"
     >
       <span style={{ fontWeight: "bold" }}>💬</span>
-    </a>
+    </button>
   );
 };
 

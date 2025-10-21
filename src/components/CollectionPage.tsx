@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import { useWhatsApp } from "@/hooks/useWhatsApp";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -39,6 +40,7 @@ const CollectionPage = ({ title, subtitle, heroImage, images, categories, produc
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const productsRef = useRef<HTMLElement>(null);
+  const { sendWhatsAppMessage, isThrottled } = useWhatsApp();
 
   const handleExploreClick = () => {
     productsRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -61,8 +63,7 @@ const CollectionPage = ({ title, subtitle, heroImage, images, categories, produc
     e.stopPropagation();
     const phoneNumber = "51924115208";
     const message = `Hola, estoy interesado en: ${product.name} - S/ ${product.price}`;
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    sendWhatsAppMessage(phoneNumber, message);
   };
 
   const filteredProducts = selectedCategory === "VER TODO" 
@@ -169,6 +170,7 @@ const CollectionPage = ({ title, subtitle, heroImage, images, categories, produc
                   size="sm"
                   className="w-full bg-[#25D366] hover:bg-[#20BD5A] text-white opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center gap-2"
                   onClick={(e) => handleWhatsAppClick(product, e)}
+                  disabled={isThrottled}
                 >
                   <MessageCircle className="h-4 w-4" />
                   Consultar
