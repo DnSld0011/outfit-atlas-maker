@@ -6,6 +6,12 @@
 All colors MUST be HSL.
 */
 
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
