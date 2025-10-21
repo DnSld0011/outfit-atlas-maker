@@ -11,18 +11,6 @@ import KidsCollection from "./pages/KidsCollection";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 
-
-function App() {
-  return (
-    <div className="App">
-      {/* Tu contenido principal */}
-      <WhatsAppButton />
-    </div>
-  );
-}
-
-export default App;
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -32,12 +20,16 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          {/* Botón de WhatsApp flotante */}
+          <WhatsAppButton />
+
+          {/* Rutas principales */}
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/collections/women" element={<WomenCollection />} />
             <Route path="/collections/men" element={<MenCollection />} />
             <Route path="/collections/kids" element={<KidsCollection />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* Ruta catch-all */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
@@ -47,3 +39,4 @@ const App = () => (
 );
 
 export default App;
+
