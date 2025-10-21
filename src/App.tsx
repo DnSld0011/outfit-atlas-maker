@@ -9,6 +9,19 @@ import WomenCollection from "./pages/WomenCollection";
 import MenCollection from "./pages/MenCollection";
 import KidsCollection from "./pages/KidsCollection";
 import NotFound from "./pages/NotFound";
+import WhatsAppButton from "./components/WhatsAppButton";
+
+
+function App() {
+  return (
+    <div className="App">
+      {/* Tu contenido principal */}
+      <WhatsAppButton />
+    </div>
+  );
+}
+
+export default App;
 
 const queryClient = new QueryClient();
 
